@@ -1,21 +1,18 @@
 {
-  "name": "crawler app",
+  "name": "crawler_app",
   "version": "0.0.1",
   "description": "website crawler",
   "author": "Davis",
   "private": true,
   "dependencies": {
     "cheerio": "^0.22.0",
+    "commander": "^2.9.0",
     "fs": "0.0.1-security",
     "node-compile": "^1.2.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
     "request": "^2.81.0",
-    "url-parse": "^1.1.9",
-    "webpack": "^2.5.1",
-    "webpack-dev-server": "^2.4.5"
+    "url-parse": "^1.1.9"
   },
-  "scripts": {
-    "start": "webpack-dev-server --hot"
+  "bin": {
+    "crawler": "./crawler_app.js"
   }
 }

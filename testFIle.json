@@ -1,0 +1,141 @@
+{
+  "/": {
+    "title": "Coding Horror",
+    "child": [
+      "/thunderbolting-your-video-card/",
+      "https://blog.codinghorror.com/the-golden-age-of-x86-gaming/",
+      "https://blog.codinghorror.com/the-golden-age-of-x86-gaming/",
+      "//blog.codinghorror.com/thunderbolting-your-video-card/#discourse-comments",
+      "/password-rules-are-bullshit/",
+      "https://blog.codinghorror.com/the-dirty-truth-about-web-passwords/",
+      "https://blog.codinghorror.com/your-password-is-too-damn-short/",
+      "https://blog.codinghorror.com/the-ugly-american-programmer/",
+      "https://blog.codinghorror.com/the-god-login/",
+      "https://blog.codinghorror.com/the-god-login/",
+      "//blog.codinghorror.com/password-rules-are-bullshit/#discourse-comments",
+      "/im-loyal-to-nothing-except-the-dream/",
+      "//blog.codinghorror.com/im-loyal-to-nothing-except-the-dream/#discourse-comments",
+      "/an-inferno-on-the-head-of-a-pin/",
+      "https://blog.codinghorror.com/moores-law-in-practical-terms/",
+      "https://blog.codinghorror.com/to-ecc-or-not-to-ecc/",
+      "https://blog.codinghorror.com/why-estimate-when-you-can-measure/",
+      "https://blog.codinghorror.com/is-your-computer-stable/",
+      "//blog.codinghorror.com/an-inferno-on-the-head-of-a-pin/#discourse-comments",
+      "/lets-encrypt-everything/",
+      "https://blog.codinghorror.com/should-all-web-traffic-be-encrypted/",
+      "https://blog.codinghorror.com/an-inalienable-right-to-privacy/",
+      "https://blog.codinghorror.com/digital-certificates-do-they-work/",
+      "//blog.codinghorror.com/lets-encrypt-everything/#discourse-comments",
+      "/page/2/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      ""
+    ],
+    "img": 66
+  },
+  "https://blog.codinghorror.com/moores-law-in-practical-terms/": {
+    "title": "Moore's Law in Practical Terms",
+    "child": [
+      "/printer-and-screen-resolution/",
+      "/joining-the-prestigious-three-monitor-club/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 7
+  },
+  "https://blog.codinghorror.com/the-golden-age-of-x86-gaming/": {
+    "title": "The Golden Age of x86 Gaming",
+    "child": [
+      "https://blog.codinghorror.com/the-2016-htpc-build/",
+      "https://blog.codinghorror.com/i-tried-vr-and-it-was-just-ok/",
+      "https://blog.codinghorror.com/our-brave-new-world-of-4k-displays/",
+      "https://blog.codinghorror.com/the-scooter-computer/",
+      "https://blog.codinghorror.com/the-2016-htpc-build/",
+      "https://blog.codinghorror.com/x86-uber-alles/",
+      "/the-raspberry-pi-has-revolutionized-emulation/",
+      "/your-own-personal-wifi-storage/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 19
+  },
+  "/password-rules-are-bullshit/": {
+    "title": "Password Rules Are Bullshit",
+    "child": [
+      "https://blog.codinghorror.com/the-dirty-truth-about-web-passwords/",
+      "https://blog.codinghorror.com/your-password-is-too-damn-short/",
+      "https://blog.codinghorror.com/the-ugly-american-programmer/",
+      "https://blog.codinghorror.com/the-god-login/",
+      "https://blog.codinghorror.com/the-god-login/",
+      "/thunderbolting-your-video-card/",
+      "/im-loyal-to-nothing-except-the-dream/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 18
+  },
+  "https://blog.codinghorror.com/the-dirty-truth-about-web-passwords/": {
+    "title": "The Dirty Truth About Web Passwords",
+    "child": [
+      "/trouble-in-the-house-of-google/",
+      "/my-holiday-in-beautiful-panau/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 7
+  },
+  "/an-inferno-on-the-head-of-a-pin/": {
+    "title": "An Inferno on the Head of a Pin",
+    "child": [
+      "https://blog.codinghorror.com/to-ecc-or-not-to-ecc/",
+      "https://blog.codinghorror.com/why-estimate-when-you-can-measure/",
+      "https://blog.codinghorror.com/is-your-computer-stable/",
+      "/im-loyal-to-nothing-except-the-dream/",
+      "/lets-encrypt-everything/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 25
+  },
+  "/im-loyal-to-nothing-except-the-dream/": {
+    "title": "I'm Loyal to Nothing Except the Dream",
+    "child": [
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 13
+  },
+  "https://blog.codinghorror.com/an-inalienable-right-to-privacy/": {
+    "title": "An Inalienable Right to Privacy",
+    "child": [
+      "/the-trouble-with-pdfs/",
+      "/modern-logo/",
+      "/about-me/",
+      "/recommended-reading-for-developers/"
+    ],
+    "parent": [
+      "/"
+    ],
+    "img": 7
+  }
+}

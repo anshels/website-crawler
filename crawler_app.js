@@ -1,61 +1,81 @@
+#!/usr/bin/env node
+
 const request = require('request');
 const cheerio = require('cheerio');
 const URL = require('url-parse');
 const fs = require('fs');
-const promptly = require('promptly');
+const program = require('commander');
+const ProgressBar = require('progress');
+
+const bar = new ProgressBar('Loading :bar :urlCount', { total: 20, clear: true});
+const allLinks = {};
 
 let startUrl = "";
 let counter = 0;
 let callOnce = true;
 let testCount = 0;
-const allLinks = {};
 let outputOnce = true;
-const searchDepth = 5;
+let searchDepth = 50;
+let urlCount = 0;
 
-const parseBody = (urlPage, linkParent) => {
-    if (urlPage.substring(0, 1) == '/') {
-        request((startUrl + urlPage), (error, response, body) => {
-            if (error) {
-                console.log("Error" + error);
-            }
-            if (response.statusCode === 200) {
-                var parsedHtml = cheerio.load(body);
-                findLinks(parsedHtml, urlPage, linkParent);
-            }
-        });
-    } else {
-        request((urlPage), (error, response, body) => {
-            if (error) {
-                console.log("Error" + error);
-            }
-            if (response.statusCode === 200) {
-                var parsedHtml = cheerio.load(body);
-                findLinks(parsedHtml, urlPage, linkParent);
-            }
-        });
-    }
+const startCommander = () => {
+    program
+        .version('0.0.1')
+        .option('-u, --url <url>', 'Write URL')
+        .option('-o, --output <output>' , 'Output file name')
+        .option('-d, --depth <depth>' , 'Search depth')
+        .parse(process.argv);
+
+    console.log('Your Site map:');
+    if (!program.url) console.log('Please write URL or -h for help');
+    if (program.output) console.log('Outputfile :', program.output);
+    if (program.depth) console.log('Depth :', program.depth);
+    if (program.depth) searchDepth = program.depth;
+    startUrl = program.url;
 };
 
-promptly.prompt('Please write website : ', function (err, value) {
-    startUrl = value;
-    parseBody('/', '');
-});
+const parseBody = (urlPage, linkParent) => {
+    request(parseUrl(urlPage), (error, response, body) => {
+        if (error) {
+            console.log("Error" + error);
+        }
+        if (response.statusCode === 200) {
+            var parsedHtml = cheerio.load(body);
+            findLinks(parsedHtml, urlPage, linkParent);
+        }
+    });
+};
+
+const parseUrl = url => {
+    return url.substring(0, 1) === '/' ? startUrl + url : url;
+};
+
+const updateBar = () => {
+    if (bar.curr === 19){
+        bar.curr = 0;
+    }
+    bar.tick({
+        urlCount
+    });
+};
 
 const findLinks = (parsedHtml, pageUrl, linkParent) => {
     testCount++;
     if (testCount < searchDepth) {
-        let links = parsedHtml("a");
+        const links = parsedHtml("a");
         const parsedTitle = parsedHtml('title').text();
         const parsedImg = parsedHtml('img').length;
         const eachLinkFound = [];
+
+        updateBar();
+
         links.each( function() {
-            let inputLink = parsedHtml(this).attr('href');
+            const inputLink = parsedHtml(this).attr('href');
             if (!(typeof inputLink === 'undefined')) { // checks if link is not equal to undefined
                 if (inputLink.includes(startUrl) || inputLink.substring(0, 1) == '/' ) { //checks if they are routes
-                    //checks if current url equal child url
-                    if (inputLink == pageUrl){ //checks if current url equal child url
-                    } else if (inputLink in allLinks) { // checks if current url already exists
-                        let foundLinksParents = allLinks[inputLink].parent;
+                    urlCount++;
+                    if (inputLink in allLinks){ //checks if current url equal child url and checks if current url already exists
+                        const foundLinksParents = allLinks[inputLink].parent;
                         if (!foundLinksParents.includes(linkParent)) {
                             allLinks[inputLink]
                                 .parent
@@ -75,16 +95,22 @@ const findLinks = (parsedHtml, pageUrl, linkParent) => {
             }
         });
     } else {
-        if (outputOnce === true) {
-            fs.writeFile("crawlerResults.json", JSON.stringify(allLinks, null, '  '), function (err) {
-                if (err) throw err;
-            });
-            console.log(JSON.stringify(allLinks, null, '  '));
-            console.log('All is written is crawlerResults.json file');
+        if (outputOnce) { // checks if file writes only one time
             outputOnce = false;
+            bar.curr = 19;
+            bar.tick();
+            console.log(JSON.stringify(allLinks, null, '  '));
+            if (program.output) { // checks if output file name is entered
+                fs.writeFile((program.output + ".json"), JSON.stringify(allLinks, null, '  '), function (err) {
+
+                    if (err) throw err;
+                });
+            }
         }
     }
 };
+startCommander();
+parseBody('/', '');
 
 
 
