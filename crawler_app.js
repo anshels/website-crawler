@@ -74,7 +74,7 @@ const findLinks = (parsedHtml, pageUrl, linkParent) => {
             if (!(typeof inputLink === 'undefined')) { // checks if link is not equal to undefined
                 if (inputLink.includes(startUrl) || inputLink.substring(0, 1) == '/' ) { //checks if they are routes
                     urlCount++;
-                    if (inputLink in allLinks){ //checks if current url equal child url and checks if current url already exists
+                    if (inputLink in allLinks){ //checks if current url already exists
                         const foundLinksParents = allLinks[inputLink].parent;
                         if (!foundLinksParents.includes(linkParent)) {
                             allLinks[inputLink]
